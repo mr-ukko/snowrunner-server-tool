@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SnowRunner Console</title>
+</head>
+<body>
+    <h1>SnowRunner server Console</h1>
+    <h2>Invite Code for multiplayer: {{SnowRunner Invite Code}}</h2>
+    <label for="key-select">Choose a region:</label>
+    <select id="key-select">
+        <option value="michigan">Michigan</option>
+        <option value="alaska">Alaska</option>
+        <option value="taymyr">Taymyr</option>
+        <option value="kola-peninsula">Kola Peninsula</option>
+        <option value="yukon">Yukon</option>
+        <option value="wisconsin">Wisconsin</option>
+        <option value="amur">Amur</option>
+        <option value="don">Don</option>
+        <option value="maine">Maine</option>
+        <option value="tennessee">Tennessee</option>
+        <option value="glades">Glades</option>
+        <option value="ontario">Ontario</option>
+        <option value="br-columbia">BR. Columbia</option>
+        <option value="scandinavia">Scandinavia</option>
+        <option value="north-carolina">North Carolina</option>
+        <option value="almaty-region">Almaty Region</option>
+        <!-- Add more regions as needed, stopping at Almaty Region -->
+    </select>
+    <button onclick="sendKeyPress()">Submit</button>
+
+    <script>
+        function sendKeyPress() {
+            var selectedKey = document.getElementById("key-select").value;
+            fetch('/keypress', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ key: selectedKey })
+            }).then(response => response.json())
+              .then(data => alert(data.message))
+              .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
+

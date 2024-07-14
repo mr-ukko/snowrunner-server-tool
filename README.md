@@ -29,6 +29,9 @@ This tool provides a web-based control panel for managing your SnowRunner game s
     ```sh
     pip install pyperclip vgamepad pywinauto pygetwindow
     ```
+3. **if using headless server**
+
+    The game need to start to [virtual display](https://github.com/itsmikethetech/Virtual-Display-Driver)
 
 ## Usage
 

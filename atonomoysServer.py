@@ -4,6 +4,7 @@ import time
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import threading
 import json
+import WinTmp
 import pygetwindow as gw
 from pywinauto import Application
 
@@ -32,6 +33,7 @@ class CustomHandler(SimpleHTTPRequestHandler):
                     html_content = file.read()
                 # Replace the placeholder with the actual string
                 html_content = html_content.replace('{{SnowRunner Invite Code}}', my_string)
+                html_content = html_content.replace('{{CPUTemp}}', WinTmp.CPU_Temp())
                 # Send the HTTP response
                 self.send_response(200)
                 self.send_header("Content-type", "text/html")
